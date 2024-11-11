@@ -1,6 +1,9 @@
 const { DataTypes } = require('sequelize');
 const database = require('../db/config');
 
+/**
+ * Entidade `Usuario` mapeada através da biblioteca **Sequelize**.
+ */
 const Usuario = database.define(
     'Usuario',
     {
