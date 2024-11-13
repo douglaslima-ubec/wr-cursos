@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     usuarioService.findById(req.params.id)
         .then(usuario => {
-            if (!usuario) return res.status(400).json("Usuário não existe!");
+            if (!usuario) return res.status(404).json("Usuário não existe!");
             return res.status(200).json(usuario);
         })
         .catch(error => {
@@ -38,10 +38,24 @@ router.get('/:id', (req, res) => {
  * Insere um novo usuário
  */
 router.post('/', (req, res) => {
-    console.log(req.body);
     usuarioService.insert(req.body)
-        .then(usuario => {
-            return res.status(201).json(usuario);
+        .then(usuarioCriado => {
+            return res.status(201).json(usuarioCriado);
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(500).json("Erro interno!");
+        });
+});
+
+/**
+ * Atualiza um usuário
+ */
+router.put('/:id', (req, res) => {
+    usuarioService.update(req.body, req.params.id)
+        .then(usuarioAtualizado => {
+            if (!usuarioAtualizado) return res.status(404).json("Usuário não existe!");
+            return res.status(200).json(usuarioAtualizado);
         })
         .catch(error => {
             console.log(error);

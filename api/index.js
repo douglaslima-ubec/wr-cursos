@@ -16,8 +16,6 @@ const perfilRouter = require('./controllers/perfilController');
 const instrutorRouter = require('./controllers/instrutorController');
 const temaRouter = require('./controllers/temaController');
 
-// Adiciona os relacionamentos das models
-//associations();
 // Sincroniza as models com o banco de dados
 database.sync();
 

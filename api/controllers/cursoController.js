@@ -34,4 +34,33 @@ router.get('/:id', (req, res) => {
         });
 });
 
+/**
+ * Insere um novo curso
+ */
+router.post('/', (req, res) => {
+    cursoService.insert(req.body)
+        .then(cursoCriado => {
+            return res.status(200).json(cursoCriado);
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(500).json("Erro interno!");
+        });
+});
+
+/**
+ * Atualiza um curso
+ */
+router.put('/:id', (req, res) => {
+    cursoService.update(req.body, req.params.id)
+        .then(cursoAtualizado => {
+            if (!cursoAtualizado) return res.status(404).json("Curso não existe!");
+            return res.status(200).json(cursoAtualizado);
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(500).json("Erro interno!");
+        });
+});
+
 module.exports = router;
