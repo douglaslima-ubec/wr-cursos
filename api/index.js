@@ -15,6 +15,7 @@ const cursoRouter = require('./controllers/cursoController');
 const perfilRouter = require('./controllers/perfilController');
 const instrutorRouter = require('./controllers/instrutorController');
 const temaRouter = require('./controllers/temaController');
+const loginRouter = require('./controllers/loginController');
 
 // Sincroniza as models com o banco de dados
 database.sync();
@@ -32,6 +33,7 @@ app.use('/curso', cursoRouter);
 app.use('/perfil', perfilRouter);
 app.use('/instrutor', instrutorRouter);
 app.use('/tema', temaRouter);
+app.use('/login', loginRouter);
 
 // Endpoint de teste
 app.get('/', (req, res) => {

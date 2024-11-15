@@ -49,19 +49,34 @@ exports.insert = (curso) => {
 };
 
 exports.update = (curso, id) => {
-    return Curso.update(curso, {
-        fields: [
-            "nome",
-            "descricao",
-            "cargaHoraria",
-            "preco",
-            "modalidade",
-            "estaPublicado",
-        ],
-        where: {
-            cursoId: id,
-        },
-    }).then(() => {
-        return this.findById(id);
+    return this.findById(id).then(cursoAtual => {
+        if (!cursoAtual) {
+            return null;
+        }
+        cursoAtual.set(curso);
+        if (Array.isArray(curso?.instrutores)) {
+            let instrutores = [];
+            curso.instrutores.forEach(instrutor => {
+                instrutores.push(instrutor?.instrutorId);
+            });
+            cursoAtual.setInstrutores(instrutores);
+        }
+        if (Array.isArray(curso?.temas)) {
+            let temas = [];
+            curso.temas.forEach(tema => {
+                temas.push(tema?.temaId);
+            });
+            cursoAtual.setTemas(temas);
+        }
+        return cursoAtual.save({
+            fields: [
+                "nome",
+                "descricao",
+                "cargaHoraria",
+                "preco",
+                "modalidade",
+                "estaPublicado",
+            ],
+        });
     });
-}
+};

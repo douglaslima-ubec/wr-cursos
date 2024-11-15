@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
         })
         .catch(error => {
             console.log(error);
-            return res.status(500).json("Erro interno!");
+            return res.status(400).json(error);
         });
 });
 
@@ -59,7 +59,7 @@ router.put('/:id', (req, res) => {
         })
         .catch(error => {
             console.log(error);
-            return res.status(500).json("Erro interno!");
+            return res.status(400).json(error);
         });
 });
 

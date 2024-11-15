@@ -37,18 +37,8 @@ CREATE TABLE `tb_curso` (
   PRIMARY KEY (`curso_id`),
   KEY `fk_tb_curso_tb_usuario` (`criado_por`),
   CONSTRAINT `fk_tb_curso_tb_usuario` FOREIGN KEY (`criado_por`) REFERENCES `tb_usuario` (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_curso`
---
-
-LOCK TABLES `tb_curso` WRITE;
-/*!40000 ALTER TABLE `tb_curso` DISABLE KEYS */;
-INSERT INTO `tb_curso` VALUES (1,'Back-end em NodeJS','Aprenda NodeJS de uma vez',80,159.90,NULL,1,'2024-11-10 00:00:00',1);
-/*!40000 ALTER TABLE `tb_curso` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tb_curso_instrutores`
@@ -68,16 +58,6 @@ CREATE TABLE `tb_curso_instrutores` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_curso_instrutores`
---
-
-LOCK TABLES `tb_curso_instrutores` WRITE;
-/*!40000 ALTER TABLE `tb_curso_instrutores` DISABLE KEYS */;
-INSERT INTO `tb_curso_instrutores` VALUES (1,1);
-/*!40000 ALTER TABLE `tb_curso_instrutores` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_curso_temas`
 --
 
@@ -95,16 +75,6 @@ CREATE TABLE `tb_curso_temas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_curso_temas`
---
-
-LOCK TABLES `tb_curso_temas` WRITE;
-/*!40000 ALTER TABLE `tb_curso_temas` DISABLE KEYS */;
-INSERT INTO `tb_curso_temas` VALUES (1,1),(1,2);
-/*!40000 ALTER TABLE `tb_curso_temas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_instrutor`
 --
 
@@ -116,18 +86,8 @@ CREATE TABLE `tb_instrutor` (
   `nome` varchar(50) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`instrutor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_instrutor`
---
-
-LOCK TABLES `tb_instrutor` WRITE;
-/*!40000 ALTER TABLE `tb_instrutor` DISABLE KEYS */;
-INSERT INTO `tb_instrutor` VALUES (1,'Adriana Falcomer','Professora de banco de dados');
-/*!40000 ALTER TABLE `tb_instrutor` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tb_perfil`
@@ -141,18 +101,8 @@ CREATE TABLE `tb_perfil` (
   `nome` varchar(50) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`perfil_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_perfil`
---
-
-LOCK TABLES `tb_perfil` WRITE;
-/*!40000 ALTER TABLE `tb_perfil` DISABLE KEYS */;
-INSERT INTO `tb_perfil` VALUES (1,'ADMIN','Administrador'),(2,'USER','Usuário');
-/*!40000 ALTER TABLE `tb_perfil` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tb_tema`
@@ -166,18 +116,8 @@ CREATE TABLE `tb_tema` (
   `nome` varchar(50) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`tema_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_tema`
---
-
-LOCK TABLES `tb_tema` WRITE;
-/*!40000 ALTER TABLE `tb_tema` DISABLE KEYS */;
-INSERT INTO `tb_tema` VALUES (1,'API RESTful','Aprenda a desenvolver API RESTful'),(2,'Back-end','Aprenda desenvolvimento back-end');
-/*!40000 ALTER TABLE `tb_tema` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tb_usuario`
@@ -200,19 +140,10 @@ CREATE TABLE `tb_usuario` (
   `alterar_senha` tinyint(1) NOT NULL DEFAULT 1,
   `expira_em` date NOT NULL DEFAULT (curdate() + interval 1 year),
   `esta_ativo` tinyint(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`usuario_id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_usuario`
---
-
-LOCK TABLES `tb_usuario` WRITE;
-/*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
-INSERT INTO `tb_usuario` VALUES (1,'Douglas Souza de Lima',NULL,NULL,NULL,NULL,NULL,NULL,'douglaslima-pro@outlook.com','douglas123',1,'2025-11-10',1);
-/*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tb_usuario_perfis`
@@ -230,16 +161,6 @@ CREATE TABLE `tb_usuario_perfis` (
   CONSTRAINT `fk_tb_usuario_perfis_tb_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `tb_usuario` (`usuario_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_usuario_perfis`
---
-
-LOCK TABLES `tb_usuario_perfis` WRITE;
-/*!40000 ALTER TABLE `tb_usuario_perfis` DISABLE KEYS */;
-INSERT INTO `tb_usuario_perfis` VALUES (1,1),(1,2);
-/*!40000 ALTER TABLE `tb_usuario_perfis` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -250,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-10 18:20:59
+-- Dump completed on 2024-11-15 12:56:49
