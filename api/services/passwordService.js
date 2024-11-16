@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
  * @param password A senha no formato de texto plano
  * @returns O hash da senha que foi gerado. Caso contrário retorna `null` se o argumento da função for igual a `null` ou `undefined`.
  */
-exports.genPasswordHash = (password) => {
+exports.generatePasswordHash = (password) => {
     if (!password) {
         return null;
     }

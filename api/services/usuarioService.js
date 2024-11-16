@@ -1,6 +1,6 @@
 const Usuario = require('../models/usuario');
 const Perfil = require('../models/perfil');
-const passwordHashService = require('../services/passwordHashService');
+const passwordService = require('../services/passwordService');
 const { Op } = require('sequelize');
 
 exports.findAll = () => {
@@ -26,9 +26,6 @@ exports.findById = (id) => {
 };
 
 exports.findByEmail = (login) => {
-    if (!login.email) {
-        return Promise.resolve(null);
-    }
     return Usuario.findAll({
         include: {
             model: Perfil,
@@ -41,7 +38,7 @@ exports.findByEmail = (login) => {
 };
 
 exports.insert = (usuario) => {
-    let senha = passwordHashService.genPasswordHash(usuario?.senha);
+    let senha = passwordService.generatePasswordHash(usuario?.senha);
     if (senha) {
         usuario.senha = senha;
     }
@@ -58,7 +55,7 @@ exports.insert = (usuario) => {
 };
 
 exports.update = (usuario, id) => {
-    let senha = passwordHashService.genPasswordHash(usuario?.senha);
+    let senha = passwordService.generatePasswordHash(usuario?.senha);
     if (senha) {
         usuario.senha = senha;
     }
@@ -74,7 +71,7 @@ exports.update = (usuario, id) => {
             });
             await usuarioAtual.setPerfis(perfis);
         }
-        usuarioAtual.save({
+        await usuarioAtual.save({
             fields: [
                 "nome",
                 "telefone",

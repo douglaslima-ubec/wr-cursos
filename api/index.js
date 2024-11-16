@@ -16,6 +16,8 @@ const perfilRouter = require('./controllers/perfilController');
 const instrutorRouter = require('./controllers/instrutorController');
 const temaRouter = require('./controllers/temaController');
 const loginRouter = require('./controllers/loginController');
+// Middlewares
+const {validateToken} = require('./services/jwtService');
 
 // Sincroniza as models com o banco de dados
 database.sync();
@@ -27,13 +29,20 @@ app.use(cors());
 // Converte o corpo das requisições para JSON
 app.use(express.json());
 
+// Adiciona a rota do login
+// Importante: adicionar essa rota antes do middleware de autenticação com token JWT,
+//             caso contrário, não será possível acessar a rota sem o token!
+app.use('/login', loginRouter);
+
+// Adiciona o serviço de autenticação com token JWT
+app.use('*', validateToken);
+
 // Adiciona a rota dos controllers
 app.use('/usuario', usuarioRouter);
 app.use('/curso', cursoRouter);
 app.use('/perfil', perfilRouter);
 app.use('/instrutor', instrutorRouter);
 app.use('/tema', temaRouter);
-app.use('/login', loginRouter);
 
 // Endpoint de teste
 app.get('/', (req, res) => {

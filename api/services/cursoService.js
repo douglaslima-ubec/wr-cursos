@@ -72,7 +72,7 @@ exports.update = (curso, id) => {
             });
             await cursoAtual.setTemas(temas);
         }
-        cursoAtual.save({
+        await cursoAtual.save({
             fields: [
                 "nome",
                 "descricao",
