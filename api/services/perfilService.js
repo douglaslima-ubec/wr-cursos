@@ -26,3 +26,15 @@ exports.update = (perfil, id) => {
         });
     });
 };
+
+exports.delete = (id) => {
+    return this.findById(id).then(async perfil => {
+        if (!perfil) {
+            return null;
+        }
+        await perfil.setUsuarios([]);
+        return perfil.destroy({
+            force: true,
+        });
+    });
+};

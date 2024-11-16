@@ -49,13 +49,28 @@ router.post('/', (req, res) => {
 });
 
 /**
- * Atualiza um tema
+ * Atualiza um tema pelo ID
  */
 router.put('/:id', (req, res) => {
     temaService.update(req.body, req.params.id)
         .then(temaAtualizado => {
             if (!temaAtualizado) return res.status(404).json("Tema não existe!");
             return res.status(200).json(temaAtualizado);
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(400).json(error);
+        });
+});
+
+/**
+ * Exclui um tema pelo ID
+ */
+router.delete('/:id', (req, res) => {
+    temaService.delete(req.params.id)
+        .then(result => {
+            if (!result) return res.status(404).json("Tema não existe!");
+            return res.status(204).end();
         })
         .catch(error => {
             console.log(error);

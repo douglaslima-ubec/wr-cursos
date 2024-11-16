@@ -26,3 +26,15 @@ exports.update = (tema, id) => {
         });
     });
 };
+
+exports.delete = (id) => {
+    return this.findById(id).then(async tema => {
+        if (!tema) {
+            return null;
+        }
+        await tema.setCursos([]);
+        return tema.destroy({
+            force: true,
+        });
+    });
+};

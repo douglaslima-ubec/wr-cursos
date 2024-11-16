@@ -26,3 +26,15 @@ exports.update = (instrutor, id) => {
         });
     });
 };
+
+exports.delete = (id) => {
+    return this.findById(id).then(async instrutor => {
+        if (!instrutor) {
+            return null;
+        }
+        await instrutor.setCursos([]);
+        return instrutor.destroy({
+            force: true,
+        });
+    });
+};

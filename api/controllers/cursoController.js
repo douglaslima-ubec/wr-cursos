@@ -49,13 +49,28 @@ router.post('/', (req, res) => {
 });
 
 /**
- * Atualiza um curso
+ * Atualiza um curso pelo ID
  */
 router.put('/:id', (req, res) => {
     cursoService.update(req.body, req.params.id)
         .then(cursoAtualizado => {
             if (!cursoAtualizado) return res.status(404).json("Curso não existe!");
             return res.status(200).json(cursoAtualizado);
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(400).json(error);
+        });
+});
+
+/**
+ * Exclui um curso pelo ID
+ */
+router.delete('/:id', (req, res) => {
+    cursoService.delete(req.params.id)
+        .then(result => {
+            if (!result) return res.status(404).json("Curso não existe!");
+            return res.status(204).end();
         })
         .catch(error => {
             console.log(error);

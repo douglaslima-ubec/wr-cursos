@@ -45,13 +45,15 @@ exports.insert = (usuario) => {
     if (senha) {
         usuario.senha = senha;
     }
-    return Usuario.create(usuario).then(usuarioCriado => {
+    return Usuario.create(usuario).then(async usuarioCriado => {
         if (Array.isArray(usuario?.perfis)) {
+            let perfis = [];
             usuario.perfis.forEach(perfil => {
-                usuarioCriado.addPerfis(perfil?.perfilId);
+                perfis.push(perfil?.perfilId);
             });
+            await usuarioCriado.setPerfis(perfis);
         }
-        return usuarioCriado;
+        return this.findById(usuarioCriado.getDataValue("usuarioId"));
     });
 };
 
@@ -60,7 +62,7 @@ exports.update = (usuario, id) => {
     if (senha) {
         usuario.senha = senha;
     }
-    return this.findById(id).then(usuarioAtual => {
+    return this.findById(id).then(async usuarioAtual => {
         if (!usuarioAtual) {
             return null;
         }
@@ -70,9 +72,9 @@ exports.update = (usuario, id) => {
             usuario.perfis.forEach(perfil => {
                 perfis.push(perfil?.perfilId);
             });
-            usuarioAtual.setPerfis(perfis);
+            await usuarioAtual.setPerfis(perfis);
         }
-        return usuarioAtual.save({
+        usuarioAtual.save({
             fields: [
                 "nome",
                 "telefone",
@@ -88,5 +90,6 @@ exports.update = (usuario, id) => {
                 "estaAtivo",
             ],
         });
-    })
+        return this.findById(usuarioAtual.getDataValue("usuarioId"));
+    });
 };

@@ -49,13 +49,28 @@ router.post('/', (req, res) => {
 });
 
 /**
- * Atualiza um perfil
+ * Atualiza um perfil pelo ID
  */
 router.put('/:id', (req, res) => {
     perfilService.update(req.body, req.params.id)
         .then(perfilAtualizado => {
             if (!perfilAtualizado) return res.status(404).json("Perfil não existe!");
             return res.status(200).json(perfilAtualizado);
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(400).json(error);
+        });
+});
+
+/**
+ * Exclui um perfil pelo ID
+ */
+router.delete('/:id', (req, res) => {
+    perfilService.delete(req.params.id)
+        .then(result => {
+            if (!result) return res.status(404).json("Perfil não existe!");
+            return res.status(204).end();
         })
         .catch(error => {
             console.log(error);

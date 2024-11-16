@@ -49,13 +49,28 @@ router.post('/', (req, res) => {
 });
 
 /**
- * Atualiza um instrutor
+ * Atualiza um instrutor pelo ID
  */
 router.put('/:id', (req, res) => {
     instrutorService.update(req.body, req.params.id)
         .then(instrutorAtualizado => {
             if (!instrutorAtualizado) return res.status(404).json("Instrutor não existe!");
             return res.status(200).json(instrutorAtualizado);
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(400).json(error);
+        });
+});
+
+/**
+ * Exclui um instrutor pelo ID
+ */
+router.delete('/:id', (req, res) => {
+    instrutorService.delete(req.params.id)
+        .then(result => {
+            if (!result) return res.status(404).json("Instrutor não existe!");
+            return res.status(204).end();
         })
         .catch(error => {
             console.log(error);
