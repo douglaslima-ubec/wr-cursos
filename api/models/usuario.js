@@ -18,6 +18,11 @@ const Usuario = database.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        usuario: {
+            type: DataTypes.STRING(50),
+            allowNull: false,
+            unique: true,
+        },
         telefone: DataTypes.STRING(20),
         cep: DataTypes.CHAR(8),
         uf: DataTypes.CHAR(2),

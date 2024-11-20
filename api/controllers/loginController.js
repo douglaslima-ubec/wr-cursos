@@ -25,11 +25,13 @@ router.post('/', (req, res) => {
             }
             let token = jwt.sign(
                 {
-                    user: {
-                        nome: usuario.nome,
-                        email: usuario.email,
-                        perfis: usuario.perfis,
-                    },
+                    usuario: {
+                        usuarioId: usuario[0].usuarioId,
+                        nome: usuario[0].nome,
+                        usuario: usuario[0].usuario,
+                        email: usuario[0].email,
+                        perfis: usuario[0].perfis
+                    }
                 },
                 SECRET_KEY,
                 {

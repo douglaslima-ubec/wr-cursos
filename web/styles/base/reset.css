@@ -1,0 +1,33 @@
+html, body {
+    background-color: #F0F0F0;
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    max-width: 1500px;
+}
+
+input {
+    width: 100%;
+}
+
+h2 {
+    font-size: 1.25rem;
+    color: #2D2D2D;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px 50px;
+}
+
+* {
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    color: #2D2D2D;
+}

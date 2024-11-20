@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Administrador</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="../../styles/components/header.css">
+    <link rel="stylesheet" href="../../styles/base/reset.css">
+    <link rel="stylesheet" href="../../styles/components/card.css">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header class="header" id="header">
+        <div class="header__logo">
+            <img src="../../img/logo.png" alt="Logo da Empresa">
+            <h1>Painel do Administrador</h1>
+        </div>
+        <div class="header__logged-user">
+            <span id="username">usuario</span>
+            <div class="header__user-picture" id="user-picture">
+                <img src="../../img/icons/user-solid.svg" alt="Foto do usuário logado">
+                <ul class="header__user-options is-hidden" id="user-options">
+                    <li>
+                        <a href="">Alterar as minhas informações</a>
+                    </li>
+                    <li>
+                        <a href="">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <!-- Título principal -->
+            <h2>Bem-vindo, <span class="username">usuario</span>!</h2>
+
+            <!-- Botões de opções -->
+            <div class="card__container">
+                <!-- Botão de Cursos -->
+                <div class="card">
+                    <p class="card__description">Cursos cadastrados</p>
+                    <a href="http://127.0.0.1:8081/pages/curso/listar-cursos/listar-cursos" class="card__button">Acessar</a>
+                </div>
+
+                <!-- Botão de Usuários -->
+                <div class="card">
+                    <p class="card__description">Usuários cadastrados</p>
+                    <a href="http://127.0.0.1:8081/pages/usuario/listar-usuarios/listar-usuarios.html" class="card__button">Acessar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="../../scripts/cookie.js"></script>
+    <script src="../../scripts/token.js"></script>
+    <script src="../../scripts/session.js"></script>
+    <script src="../../scripts/header.js"></script>
+    <script>
+        window.onload = () => {
+            loadHeader();
+            document.querySelector("span.username").innerText = extractPayloadFromToken(getCookie("token")).usuario;
+        };
+    </script>
+</body>
+
+</html>

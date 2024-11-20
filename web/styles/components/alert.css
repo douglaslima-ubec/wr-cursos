@@ -1,0 +1,70 @@
+.alerts {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+}
+
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 250px;
+    cursor: default;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: 1.5s all ease-in-out;
+}
+
+.alert__icon {
+    height: 25px;
+}
+
+.alert__message {
+    font-size: .9rem;
+    font-weight: 400;
+}
+
+/* Alert states */
+.alert--error {
+    background-color: #ffdada;
+    border: 1px solid #ff0000;
+}
+
+.alert--error img {
+    filter: invert(20%) sepia(82%) saturate(7307%) hue-rotate(357deg) brightness(97%) contrast(114%);
+}
+
+.alert--error p {
+    color: red;
+}
+
+.alert--success {
+    background-color: rgb(177, 255, 198);
+    border: 1px solid #008000;
+}
+
+.alert--success img {
+    filter: invert(18%) sepia(85%) saturate(6412%) hue-rotate(117deg) brightness(100%) contrast(104%);
+}
+
+.alert--success p {
+    color: green;
+}
+
+.alert--info {
+    background-color: rgb(177, 246, 255);
+    border: 1px solid #0000ff;
+}
+
+.alert--info img {
+    filter: invert(9%) sepia(100%) saturate(7074%) hue-rotate(248deg) brightness(93%) contrast(146%);
+}
+
+.alert--info p {
+    color: #0000ff;
+}

@@ -1,0 +1,35 @@
+/* Fundo com gradiente ajustado para não ter azul escuro na parte inferior */
+body {
+    background: linear-gradient(to bottom, #0A74B8, #1394FD);
+}
+
+/* Centralizando o container de cadastro */
+.register-container {
+    background-color: #fff;
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste de espaçamento para o título "Cadastrar Usuário" */
+.register-container h2 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+/* Cor da opção Administrador em vermelho */
+.admin-option {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* Ajuste de espaçamento para a parte inferior da tela */
+.container {
+    min-height: 100vh;
+    /* Isso garante que a tela ocupe a altura total, sem sobrecarregar com azul escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

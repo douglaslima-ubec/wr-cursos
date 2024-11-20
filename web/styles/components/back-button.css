@@ -1,0 +1,13 @@
+/* Botão de voltar */
+.back-button {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #0A74B8;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.back-button img {
+    height: 30px;
+    width: 30px;
+}

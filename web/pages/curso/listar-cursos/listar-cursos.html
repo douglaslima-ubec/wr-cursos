@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WR Cursos - Listar Cursos</title>
+    <link rel="shortcut icon" href="../../../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./listar-cursos.css">
+    <link rel="stylesheet" href="../../../styles/components/back-button.css">
+    <link rel="stylesheet" href="../../../styles/components/header.css">
+    <link rel="stylesheet" href="../../../styles/base/reset.css">
+    <link rel="stylesheet" href="../../../styles/components/table.css">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header class="header" id="header">
+        <div class="header__logo">
+            <img src="../../../img/logo.png" alt="Logo da Empresa">
+            <h1>Painel do Administrador</h1>
+        </div>
+        <div class="header__logged-user">
+            <span id="username">usuario</span>
+            <div class="header__user-picture" id="user-picture">
+                <img src="../../../img/icons/user-solid.svg" alt="Foto do usuário logado">
+                <ul class="header__user-options is-hidden" id="user-options">
+                    <li>
+                        <a href="">Alterar as minhas informações</a>
+                    </li>
+                    <li>
+                        <a href="">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Botão de voltar -->
+        <div class="back-button">
+            <a href="http://127.0.0.1:8081/pages/home/home">
+                <img src="../../../img/arrow-left-circle 1.png" alt="Voltar">
+            </a>
+        </div>
+
+        <section>
+            <!-- Barra de ações -->
+            <div class="action-bar">
+                <h2>Cursos cadastrados</h2>
+                <div class="action-bar__search-bar">
+                    <input type="text" placeholder="Pesquisar" id="search-input">
+                    <a href="http://127.0.0.1:8081/pages/curso/cadastrar-curso/cadastrar-curso">Cadastrar Curso</a>
+                </div>
+            </div>
+
+            <!-- Tabela -->
+             <div class="table__container">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>C.H</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="course-table">
+                    <tr>
+                        <td>
+                            <a href="http://127.0.0.1:8081/pages/curso/editar-curso/editar-curso?cursoId=" class="button--edit">Editar</button>
+                        </td>
+                        <td>Operador de Micro</td>
+                        <td>Tecnologia da Informação bbla bla bla Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eius atque voluptas ut culpa dolorem repellat voluptatibus incidunt aut in, quasi officiis laudantium obcaecati eos eum nostrum asperiores dolor libero?</td>
+                        <td>120</td>
+                        <td>R$ 1200</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://127.0.0.1:8081/pages/curso/editar-curso/editar-curso?cursoId=" class="button--edit">Editar</button>
+                        </td>
+                        <td>Desenvolvimento Web</td>
+                        <td>Tecnologia Inform...</td>
+                        <td>200</td>
+                        <td>R$ 1500</td>
+                    </tr>
+                </tbody>
+            </table></div>
+        </section>
+    </main>
+
+    <script src="../../../scripts/cookie.js"></script>
+    <script src="../../../scripts/token.js"></script>
+    <script src="../../../scripts/session.js"></script>
+    <script src="./listar-cursos.js"></script>
+    <script src="../../../scripts/header.js"></script>
+    <script>
+        window.onload = () => {
+            loadHeader();
+        };
+    </script>
+</body>
+
+</html>

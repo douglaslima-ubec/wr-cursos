@@ -1,0 +1,84 @@
+@import url('../state/is-hidden.css');
+@import url('../state/is-visible.css');
+
+.header {
+    background-color: #D9D9D9;
+    padding: 10px 30px;
+    border-bottom: 1px solid rgb(120, 120, 120);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.header__logo img{
+    height: 40px;
+}
+
+.header__logo h1 {
+    font-size: 1.25rem;
+    color: #2D2D2D;
+    font-weight: bold;
+}
+
+.header__logged-user {
+    display: flex;
+    align-items: center;
+    color: #2D2D2D;
+    gap: 10px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.header__user-picture {
+    background-color: #2D2D2D;
+    padding: 5px;
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.header__user-options {
+    background-color: white;
+    box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 5px;
+    width: 210px;
+    font-size: .8rem;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all .2s ease-in;
+}
+
+.header__user-options a {
+    font-weight: 400;
+    color: black;
+    text-align: right;
+    display: block;
+    padding: 5px;
+}
+
+.header__user-options a:hover {
+    background-color: rgb(234, 233, 233);
+}
+
+.header__user-picture:hover img {
+    opacity: .9;
+}
+
+.header__user-picture img {
+    filter: invert(99%) sepia(14%) saturate(195%) hue-rotate(141deg) brightness(111%) contrast(100%);
+    height: 100%;
+}

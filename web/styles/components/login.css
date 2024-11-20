@@ -1,0 +1,68 @@
+main {
+    padding: 50px 0;
+}
+
+.login {
+    margin: auto;
+    background-color: #0A74B8;
+    max-width: 800px;
+    width: 100%;
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.login__title {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.login__label {
+    color: #ffffff;
+    font-weight: 400 !important;
+}
+
+/* Campos de formulário com fundo azul claro */
+.login__input {
+    background-color: #e6f2ff;
+    color: #0A74B8;
+    border: none;
+}
+
+/* Placeholder em azul */
+.login__input::placeholder {
+    color: #0A74B8;
+}
+
+/* Borda do input ao focar */
+.login__input:focus {
+    border: 2px solid #ffffff;
+    box-shadow: none;
+}
+
+/* Links ajustados para branco */
+.login__forgot-password {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    color: white;
+    font-size: .9rem;
+}
+
+.login__forgot-password:hover {
+    color: #e6f2ff;
+    text-decoration: underline;
+}
+
+/* Ajuste de imagem do logo */
+.logo img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

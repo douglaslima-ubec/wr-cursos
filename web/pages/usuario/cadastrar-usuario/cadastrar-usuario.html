@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WR Cursos - Cadastrar Usuário</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./cadastrar-usuario.html">
+    <link rel="stylesheet" href="./cadastrar-usuario.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="register-container">
+            <h2 class="text-center mb-4">Cadastrar Usuário</h2>
+            <form>
+                <!-- Nome Completo -->
+                <div class="form-group">
+                    <label for="fullname">Nome completo *</label>
+                    <input type="text" class="form-control" id="fullname" name="fullname" required>
+                </div>
+
+                <!-- E-mail -->
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <!-- Nome de Usuário -->
+                <div class="form-group">
+                    <label for="username">Nome de usuário *</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+
+                <!-- Senha -->
+                <div class="form-group">
+                    <label for="password">Senha *</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <!-- Confirmar Senha -->
+                <div class="form-group">
+                    <label for="confirm_password">Confirmar senha *</label>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                </div>
+
+                <!-- Solicitar alteração de senha no próximo login -->
+                <div class="form-group">
+                    <label>Solicitar alteração da senha no próximo login?</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="change_password" id="yes" value="yes">
+                            <label class="form-check-label" for="yes">Sim</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="change_password" id="no" value="no"
+                                checked>
+                            <label class="form-check-label" for="no">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data de Expiração -->
+                <div class="form-group">
+                    <label for="expiration_date">Data de expiração *</label>
+                    <input type="date" class="form-control" id="expiration_date" name="expiration_date" required>
+                </div>
+
+                <!-- Perfil de Acesso -->
+                <div class="form-group">
+                    <label for="access_profile">Perfil de acesso *</label>
+                    <select class="form-control" id="access_profile" name="access_profile" required>
+                        <option value="admin" class="admin-option">Administrador</option>
+                    </select>
+                </div>
+
+                <!-- Botão Cadastrar -->
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Painel do Administrador</title>
+    <link rel="stylesheet" href="./styles/components/header.css">
+    <link rel="stylesheet" href="./styles/base/reset.css">
+    <link rel="stylesheet" href="./styles/components/login.css">
+    <link rel="stylesheet" href="./styles/components/form.css">
+    <link rel="stylesheet" href="./styles/components/button.css">
+    <link rel="stylesheet" href="./styles/components/alert.css">
+    <link rel="stylesheet" href="./styles/layout/position.css">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header class="header" id="header">
+        <div class="header__logo">
+            <img src="./img/logo.png" alt="Logo da Empresa">
+            <h1>Painel do Administrador</h1>
+        </div>
+    </header>
+
+    <main class="p-relative">
+        <div class="alerts" id="alerts">
+            <!--
+            <div class="alert alert--error">
+                <img src="./img/icons/xmark-solid.svg" alt="Ícone do alerta" class="alert__icon">
+                <p class="alert__message">
+                    Erro ao verificar as suas credenciais!
+                </p>
+            </div>
+            -->
+        </div>
+
+        <section class="login">
+
+            <div class="login__picture">
+                <img src="img/logo.png" alt="Logo da Empresa">
+            </div>
+
+            <form onsubmit="login(event)">
+                <h2 class="login__title">Entre com sua conta</h2>
+                <div class="form__field">
+                    <label for="email" class="login__label">E-mail</label>
+                    <input type="email" class="login__input" id="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+                <div class="form__field">
+                    <label for="password" class="login__label">Senha</label>
+                    <input type="password" class="login__input" id="password" name="password" placeholder="Digite sua senha" required>
+                </div>
+                <a href="./pages/usuario/recuperar-senha/recuperar-senha.html" class="login__forgot-password">Esqueci minha senha</a>
+                <button type="submit" class="button button--light">Entrar</button>
+            </form>
+
+        </section>
+    </main>
+    <script src="./scripts/alert.js"></script>
+    <script src="./scripts/login.js"></script>
+</body>
+
+
+</html>

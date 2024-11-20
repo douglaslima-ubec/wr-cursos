@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha - Painel do Administrador</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Fundo com gradiente ajustado para não ter azul escuro na parte inferior */
+        body {
+            background: linear-gradient(to bottom, #0A74B8, #1394FD);
+        }
+
+        /* Centralizando o container de recuperação de senha */
+        .recovery-container {
+            background-color: #fff;
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Ajuste de espaçamento para o título "Recuperar Senha" */
+        .recovery-container h2 {
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        /* Ajuste de espaçamento para a parte inferior da tela */
+        .container {
+            min-height: 100vh;
+            /* Isso garante que a tela ocupe a altura total, sem sobrecarregar com azul escuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="recovery-container">
+            <h2 class="text-center mb-4">Recuperar senha</h2>
+            <p class="text-center mb-4">Informe seu e-mail ou nome de usuário para receber o link de redefinição.</p>
+            <form>
+                <!-- E-mail ou nome de usuário -->
+                <div class="form-group">
+                    <label for="recovery-email">E-mail ou nome de usuário *</label>
+                    <input type="text" class="form-control" id="recovery-email" name="recovery-email" required>
+                </div>
+
+                <!-- Botão Enviar -->
+                <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

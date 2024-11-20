@@ -1,0 +1,37 @@
+.button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.button--primary {
+    background-color: #0A74B8;
+    color: #FFF;
+}
+
+.button--primary:hover {
+    background-color: #005F9A;
+}
+
+.button--success {
+    background-color: #218838;
+    color: #FFF;
+}
+
+.button--success:hover {
+    background-color: #05651a;
+}
+
+.button--light {
+    background-color: #e2e6ea;
+    color: #212529;
+}
+
+.button--light:hover {
+    background-color: #c7cace;
+}

@@ -25,6 +25,18 @@ exports.findById = (id) => {
     });
 };
 
+exports.search = (parameters) => {
+    return Usuario.findAll({
+        include: [
+            {
+                model: Perfil,
+                as: "perfis",
+            },
+        ],
+        where: parameters,
+    })
+};
+
 exports.findByEmail = (login) => {
     return Usuario.findAll({
         include: {
@@ -74,6 +86,7 @@ exports.update = (usuario, id) => {
         await usuarioAtual.save({
             fields: [
                 "nome",
+                "usuario",
                 "telefone",
                 "cep",
                 "uf",

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WR Cursos - Editar Usuário</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./editar-usuario.css">
+</head>
+
+<body>
+    <!-- Painel Superior -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="../../img/logo.png" alt="Logo da Empresa">
+        </div>
+        <h1>Painel do Administrador</h1>
+        <div class="user-info">
+            <span>douglaslima</span>
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </div>
+
+    <!-- Botão de voltar -->
+    <div class="back-button">
+        <a href="../listar-usuarios/listar-usuarios.html">
+            <img src="../../img/arrow-left-circle 1.png" alt="Voltar">
+        </a>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="container">
+        <!-- Botões no Topo -->
+        <div class="top-buttons">
+            <a href="alterar-senha.html" class="btn btn-green">Alterar Senha</a>
+            <a href="alterar-email.html" class="btn btn-green">Alterar Email</a>
+            <a href="" class="btn btn-red">Desativar</a>
+        </div>
+
+        <!-- Dados Pessoais -->
+        <h2 class="section-title">Informações do usuário</h2>
+        <div class="form-group">
+            <label for="full-name">Nome completo</label>
+            <input type="text" id="full-name" value="Douglas Souza de Lima" disabled>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="text" id="phone" value="(61) 98549-7046" disabled>
+        </div>
+
+        <!-- Endereço -->
+        <div class="form-group">
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" value="72319-103" disabled>
+        </div>
+        <div class="form-group">
+            <label for="state">UF</label>
+            <input type="text" id="state" value="DF" disabled>
+        </div>
+        <div class="form-group">
+            <label for="city">Cidade</label>
+            <input type="text" id="city" value="Brasília" disabled>
+        </div>
+        <div class="form-group">
+            <label for="neighborhood">Bairro</label>
+            <input type="text" id="neighborhood" value="Samambaia" disabled>
+        </div>
+        <div class="form-group">
+            <label for="street">Rua</label>
+            <input type="text" id="street" value="Quadra 403 Conjunto 03" disabled>
+        </div>
+
+        <!-- Dados de Acesso -->
+        <h3 class="section-title">Dados de Acesso</h3>
+        <div class="form-group">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" value="douglaslima" disabled>
+        </div>
+        <div class="form-group">
+            <label for="expiration">Data de expiração</label>
+            <input type="date" id="expiration" value="2025-05-01" disabled>
+        </div>
+
+        <!-- Perfis de Acesso -->
+        <div class="form-group">
+            <label>Perfis de Acesso</label>
+            <span class="badge badge-admin">Administrador</span>
+        </div>
+
+        <!-- Botões Editar -->
+        <button class="btn-edit" id="btn-edit" onclick="enableEdit()">Editar</button>
+        <div id="edit-buttons" style="display: none;">
+            <button class="btn btn-cancel" onclick="cancelEdit()">Cancelar</button>
+            <button class="btn btn-edit" onclick="saveChanges()">Salvar</button>
+        </div>
+    </div>
+
+    <script>
+        function enableEdit() {
+            // Habilita os campos para edição
+            document.querySelectorAll('input').forEach(input => input.disabled = false);
+
+            // Mostra os botões de "Cancelar" e "Salvar"
+            document.getElementById('edit-buttons').style.display = 'block';
+
+            // Oculta o botão "Editar"
+            document.getElementById('btn-edit').style.display = 'none';
+        }
+
+        function cancelEdit() {
+            // Desabilita os campos para edição
+            document.querySelectorAll('input').forEach(input => input.disabled = true);
+
+            // Mostra o botão "Editar" novamente
+            document.getElementById('btn-edit').style.display = 'block';
+
+            // Oculta os botões de "Cancelar" e "Salvar"
+            document.getElementById('edit-buttons').style.display = 'none';
+        }
+
+        function saveChanges() {
+            // Lógica para salvar as alterações pode ser implementada aqui
+            alert('Alterações salvas com sucesso!');
+
+            // Após salvar, desabilitar os campos novamente
+            cancelEdit();
+        }
+    </script>
+</body>
+
+</html>

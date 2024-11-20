@@ -22,6 +22,5 @@ exports.verifyPasswordHash = (password, passwordHash) => {
     if (!password) {
         return false;
     }
-    console.log(password + ", " + passwordHash)
     return bcrypt.compareSync(password, passwordHash);
 };

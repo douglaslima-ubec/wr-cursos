@@ -1,0 +1,35 @@
+/* Tabela */
+.table__container {
+    margin: 30px 0;
+    background-color: #0A74B8;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+th,
+td {
+    min-width: 100px;
+    max-width: 0;
+    text-align: left;
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #FFF;
+}
+
+th {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+td {
+    font-size: .9rem;
+    font-weight: 400;
+}

@@ -20,6 +20,20 @@ router.get('/', (req, res) => {
 });
 
 /**
+ * Busca todos os usuários pelos parâmetros da busca
+ */
+router.get('/search', (req, res) => {
+    usuarioService.search(req.body)
+        .then(usuarios => {
+            return res.status(200).json(usuarios);
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(500).json("Erro interno!");
+        })
+});
+
+/**
  * Busca usuário pelo ID
  */
 router.get('/:id', (req, res) => {
