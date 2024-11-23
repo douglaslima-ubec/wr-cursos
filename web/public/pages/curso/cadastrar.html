@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WR Cursos - Cadastrar Curso</title>
-    <link rel="shortcut icon" href="../../../img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../../../styles/components/back-button.css">
-    <link rel="stylesheet" href="../../../styles/components/form.css">
-    <link rel="stylesheet" href="../../../styles/components/header.css">
-    <link rel="stylesheet" href="../../../styles/components/button.css">
-    <link rel="stylesheet" href="../../../styles/base/reset.css">
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/components/back-button.css">
+    <link rel="stylesheet" href="../../styles/components/form.css">
+    <link rel="stylesheet" href="../../styles/components/header.css">
+    <link rel="stylesheet" href="../../styles/components/button.css">
+    <link rel="stylesheet" href="../../styles/components/alert.css">
+    <link rel="stylesheet" href="../../styles/base/reset.css">
 </head>
 
 <body>
-    <!-- Cabeçalho -->
     <header class="header" id="header">
         <div class="header__logo">
-            <img src="../../../img/logo.png" alt="Logo da Empresa">
+            <img src="../../img/logo.png" alt="Logo da Empresa">
             <h1>Painel do Administrador</h1>
         </div>
         <div class="header__logged-user">
             <span id="username">usuario</span>
             <div class="header__user-picture" id="user-picture">
-                <img src="../../../img/icons/user-solid.svg" alt="Foto do usuário logado">
+                <img src="../../img/icons/user-solid.svg" alt="Foto do usuário logado">
                 <ul class="header__user-options is-hidden" id="user-options">
                     <li>
                         <a href="">Alterar as minhas informações</a>
@@ -37,17 +37,18 @@
     </header>
 
     <main>
+        <div class="alerts" id="alerts"></div>
+
         <div class="back-button">
-            <a href="http://127.0.0.1:8081/pages/curso/listar-cursos/listar-cursos">
-                <img src="../../../img/arrow-left-circle 1.png" alt="Voltar" style="width: 30px; height: 30px;">
+            <a href="http://127.0.0.1:8081/pages/curso/listar">
+                <img src="../../img/arrow-left-circle 1.png" alt="Voltar" style="width: 30px; height: 30px;">
             </a>
         </div>
 
         <section>
             <h2>Cadastrar Curso</h2>
 
-            <!-- Formulário -->
-            <form class="form">
+            <form class="form" onsubmit="cadastrarCurso(event)">
                 <div class="form__header">
                     <h3>Dados do Curso</h3>
                 </div>
@@ -78,14 +79,19 @@
         </section>
     </main>
 
-    
-    <script src="../../../scripts/cookie.js"></script>
-    <script src="../../../scripts/token.js"></script>
-    <script src="../../../scripts/session.js"></script>
-    <script src="../../../scripts/header.js"></script>
+    <script src="../../scripts/alert.js"></script>
+    <script src="../../scripts/token.js"></script>
+    <script src="../../scripts/session.js"></script>
+    <script src="../../scripts/curso.js"></script>
+    <script src="../../scripts/header.js"></script>
     <script>
         window.onload = () => {
-            loadHeader();
+            loadSession();
+            let urlQueryString = window.location.search;
+            let urlQueryParams = new URLSearchParams(urlQueryString);
+            if (urlQueryParams.has("alertType") && urlQueryParams.has("alertMessage")) {
+                showAlert(urlQueryParams.get("alertType"), urlQueryParams.get("alertMessage"));
+            }
         };
     </script> 
 </body>

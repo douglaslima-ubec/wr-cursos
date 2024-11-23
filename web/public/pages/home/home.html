@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel do Administrador</title>
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./home.css">
     <link rel="stylesheet" href="../../styles/components/header.css">
-    <link rel="stylesheet" href="../../styles/base/reset.css">
     <link rel="stylesheet" href="../../styles/components/card.css">
+    <link rel="stylesheet" href="../../styles/components/alert.css">
+    <link rel="stylesheet" href="../../styles/base/reset.css">
+    <style>
+        .username {
+            color: #0A74B8;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Cabeçalho -->
     <header class="header" id="header">
         <div class="header__logo">
             <img src="../../img/logo.png" alt="Logo da Empresa">
@@ -36,35 +40,35 @@
     </header>
 
     <main>
+        <div class="alerts" id="alerts"></div>
         <section>
-            <!-- Título principal -->
             <h2>Bem-vindo, <span class="username">usuario</span>!</h2>
-
-            <!-- Botões de opções -->
             <div class="card__container">
-                <!-- Botão de Cursos -->
                 <div class="card">
                     <p class="card__description">Cursos cadastrados</p>
-                    <a href="http://127.0.0.1:8081/pages/curso/listar-cursos/listar-cursos" class="card__button">Acessar</a>
+                    <a href="http://127.0.0.1:8081/pages/curso/listar" class="card__button">Acessar</a>
                 </div>
-
-                <!-- Botão de Usuários -->
                 <div class="card">
                     <p class="card__description">Usuários cadastrados</p>
-                    <a href="http://127.0.0.1:8081/pages/usuario/listar-usuarios/listar-usuarios.html" class="card__button">Acessar</a>
+                    <a href="http://127.0.0.1:8081/pages/usuario/listar" class="card__button">Acessar</a>
                 </div>
             </div>
         </section>
     </main>
     
-    <script src="../../scripts/cookie.js"></script>
+    <script src="../../scripts/alert.js"></script>
     <script src="../../scripts/token.js"></script>
     <script src="../../scripts/session.js"></script>
     <script src="../../scripts/header.js"></script>
     <script>
         window.onload = () => {
-            loadHeader();
-            document.querySelector("span.username").innerText = extractPayloadFromToken(getCookie("token")).usuario;
+            loadSession();
+            document.querySelector("span.username").innerText = extractPayloadFromToken(localStorage.getItem("token")).usuario;
+            let urlQueryString = window.location.search;
+            let urlQueryParams = new URLSearchParams(urlQueryString);
+            if (urlQueryParams.has("alertType") && urlQueryParams.has("alertMessage")) {
+                showAlert(urlQueryParams.get("alertType"), urlQueryParams.get("alertMessage"));
+            }
         };
     </script>
 </body>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WR Cursos - Editar Curso</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/components/back-button.css">
+    <link rel="stylesheet" href="../../styles/components/form.css">
+    <link rel="stylesheet" href="../../styles/components/header.css">
+    <link rel="stylesheet" href="../../styles/components/button.css">
+    <link rel="stylesheet" href="../../styles/components/alert.css">
+    <link rel="stylesheet" href="../../styles/base/reset.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="header__logo">
+            <img src="../../img/logo.png" alt="Logo da Empresa">
+            <h1>Painel do Administrador</h1>
+        </div>
+        <div class="header__logged-user">
+            <span id="username">usuario</span>
+            <div class="header__user-picture" id="user-picture">
+                <img src="../../img/icons/user-solid.svg" alt="Foto do usuário logado">
+                <ul class="header__user-options is-hidden" id="user-options">
+                    <li>
+                        <a href="">Alterar as minhas informações</a>
+                    </li>
+                    <li>
+                        <a href="">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="alerts" id="alerts"></div>
+
+        <div class="back-button">
+            <a href="http://127.0.0.1:8081/pages/curso/listar">
+                <img src="../../img/arrow-left-circle 1.png" alt="Voltar">
+            </a>
+        </div>
+        
+        <section>
+            <h2>Editar Curso</h2>
+            <form class="form" onsubmit="atualizarCurso(event)" id="edit-course-form">
+                <div class="form__header">
+                    <h3>Dados do Curso</h3>
+                    <div>
+                        <button type="button" class="button button--success" id="publish">Publicar</button>
+                        <button type="button" class="button button--delete" id="unpublish">Despublicar</button>
+                    </div>
+                </div>
+
+                <div class="form__field">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Nome do Curso" required disabled>
+                </div>
+
+                <div class="form__group">
+                    <div class="form__field">
+                        <label for="ch">C.H</label>
+                        <input type="number" id="ch" placeholder="Carga Horária" required disabled>
+                    </div>
+                    <div class="form__field">
+                        <label for="preco">Preço</label>
+                        <input type="text" id="preco" placeholder="Preço do Curso" required disabled>
+                    </div>
+                </div>
+                    
+                <div class="form__field">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" rows="4" placeholder="Descrição do Curso" required disabled></textarea>
+                </div>
+                
+                <div class="form__group">
+                    <button type="button" class="button button--primary" id="edit" onclick="editForm('edit-course-form')">Editar</button>
+                    <button type="button" class="button button--light" id="cancel" onclick="cancelForm('edit-course-form')" style="display: none;">Cancelar</button>
+                    <button type="submit" class="button button--primary" id="save" onclick="saveForm('edit-course-form')" style="display: none;">Salvar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="../../scripts/alert.js"></script>
+    <script src="../../scripts/token.js"></script>
+    <script src="../../scripts/session.js"></script>
+    <script src="../../scripts/curso.js"></script>
+    <script src="../../scripts/form.js"></script>
+    <script src="../../scripts/header.js"></script>
+    <script>
+        window.onload = () => {
+            loadSession();
+            let urlQueryString = window.location.search;
+            let urlQueryParams = new URLSearchParams(urlQueryString);
+            if (urlQueryParams.has("alertType") && urlQueryParams.has("alertMessage")) {
+                showAlert(urlQueryParams.get("alertType"), urlQueryParams.get("alertMessage"));
+            }
+            pesquisarCurso();
+        };
+    </script>
+</body>
+
+</html>

@@ -35,3 +35,21 @@
 .button--light:hover {
     background-color: #c7cace;
 }
+
+.button--edit {
+    background-color: #FFD700;
+    color: #000;
+}
+
+.button--edit:hover {
+    background-color: #FFC107;
+}
+
+.button--delete {
+    background-color: rgb(161, 33, 33);
+    color: white;
+}
+
+.button--delete:hover {
+    background-color: rgb(118, 16, 16);
+}

@@ -56,5 +56,7 @@ function closeAlert(alertId) {
 
 function hideAlert(alertId) {
     let alert = document.getElementById(alertId);
-    document.querySelector('.alerts').removeChild(alert);
+    if (alert) {
+        document.querySelector('.alerts').removeChild(alert);
+    }
 }

@@ -1,40 +1,27 @@
-/* Título e barra de ações alinhados */
-.action-bar {
+/* Barra de ação com uma barra de pesquisa */
+.actionbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.action-bar__search-bar {
+.actionbar__searchbar {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.action-bar__search-bar input {
+.actionbar__searchbar input {
     border: 2px solid #0A74B8;
     border-radius: 8px;
     padding: 5px 10px;
     width: 200px;
 }
 
-.action-bar__search-bar a {
+.actionbar__searchbar a {
     background-color: #0A74B8;
     color: white;
     border: none;
     border-radius: 8px;
     padding: 5px 10px;
-}
-
-.button--edit {
-    background-color: #FFD700;
-    border: none;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button--edit:hover {
-    background-color: #FFC107;
 }
