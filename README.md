@@ -24,14 +24,14 @@
     1.1. Por exemplo: [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
 2. Abrir a pasta `api/` e executar os comandos:
-```json
-npm install // Espere o NPM instalar todas as dependências do projeto
+```markdown
+npm install <!-- Espere o NPM instalar todas as dependências do projeto -->
 npm start
 ```
 
 3. Abrir a pasta `web/` e executar os comandos:
-```json
-npm install // Espere o NPM instalar todas as dependências do projeto
+```markdown
+npm install <!-- Espere o NPM instalar todas as dependências do projeto -->
 npm start
 ```
 
@@ -39,20 +39,20 @@ npm start
 Em caso de **erro** ao tentar executar a aplicação, verificar se algum outro programa já está executando na porta `8080`
 
 Por exemplo, no Windows você consegue parar o programa através do número do processo (pid). Para isso, basta executar o seguinte comando para obter o pid:
-```json
+```markdown
 netstat -ano | find "8080"
 ```
 E então você pode parar o programa com o seguinte comando: 
-```json
+```markdown
 taskkill /pid {pid} /f
-// Exemplo: taskkill /pid 23136 /f
+<!-- Exemplo: taskkill /pid 23136 /f -->
 ```
 
 ## Como testar?
 Você pode acessar o painel administrativo com as credenciais de administrador:
-```json
-e-mail: "admin@wrcursos.com.br"
-senha: "admin123"
+```
+e-mail: admin@wrcursos.com.br
+senha: admin123
 ```
 
 ## Contribuição
