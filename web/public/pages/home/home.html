@@ -18,27 +18,6 @@
 </head>
 
 <body>
-    <header class="header" id="header">
-        <div class="header__logo">
-            <img src="../../img/logo.png" alt="Logo da Empresa">
-            <h1>Painel do Administrador</h1>
-        </div>
-        <div class="header__logged-user">
-            <span id="username">usuario</span>
-            <div class="header__user-picture" id="user-picture">
-                <img src="../../img/icons/user-solid.svg" alt="Foto do usuário logado">
-                <ul class="header__user-options is-hidden" id="user-options">
-                    <li>
-                        <a href="">Alterar as minhas informações</a>
-                    </li>
-                    <li>
-                        <a href="">Sair</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
-
     <main>
         <div class="alerts" id="alerts"></div>
         <section>
@@ -50,7 +29,7 @@
                 </div>
                 <div class="card">
                     <p class="card__description">Usuários cadastrados</p>
-                    <a href="http://127.0.0.1:8081/pages/usuario/listar" class="card__button">Acessar</a>
+                    <a href="http://127.0.0.1:8081/pages/usuario/admin/listar" class="card__button">Acessar</a>
                 </div>
             </div>
         </section>
@@ -63,7 +42,8 @@
     <script>
         window.onload = () => {
             loadSession();
-            document.querySelector("span.username").innerText = extractPayloadFromToken(localStorage.getItem("token")).usuario;
+            loadHeader();
+            document.querySelector("span.username").innerText = extractPayloadFromToken(localStorage.getItem("token")).usuario.usuario;
             let urlQueryString = window.location.search;
             let urlQueryParams = new URLSearchParams(urlQueryString);
             if (urlQueryParams.has("alertType") && urlQueryParams.has("alertMessage")) {

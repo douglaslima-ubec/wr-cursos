@@ -1,0 +1,39 @@
+.modal {
+    position: absolute;
+    padding: 40px;
+    border-radius: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 3;
+    transition: top .5s ease-in;
+    box-shadow: 4px 10px 3px rgba(0, 0, 0, 0.5);
+}
+
+.modal--confirm {
+    background-color: #0A74B8;
+}
+
+.modal--alert {
+    background-color: rgb(161, 33, 33);
+}
+
+.modal__title, .modal__description {
+    color: white;
+}
+
+.modal__title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.modal__description {
+    font-size: .9rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.modal__buttons {
+    display: flex;
+    gap: 10px;
+}

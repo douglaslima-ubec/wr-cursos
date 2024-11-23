@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WR Cursos - Usuários Cadastrados</title>
+    <link rel="shortcut icon" href="../../../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../styles/components/alert.css">
+    <link rel="stylesheet" href="../../../styles/components/back-button.css">
+    <link rel="stylesheet" href="../../../styles/components/button.css">
+    <link rel="stylesheet" href="../../../styles/components/header.css">
+    <link rel="stylesheet" href="../../../styles/components/table.css">
+    <link rel="stylesheet" href="../../../styles/components/actionbar.css">
+    <link rel="stylesheet" href="../../../styles/base/reset.css">
+</head>
+
+<body>
+    <main>
+        <div class="alerts" id="alerts"></div>
+
+        <div class="back-button">
+            <a href="http://127.0.0.1:8081/pages/home/home">
+                <img src="../../../img/arrow-left-circle 1.png" alt="Voltar">
+            </a>
+        </div>
+
+        <section>
+            <div class="actionbar">
+                <h2 class="actionbar__title">Usuários cadastrados</h2>
+                <div class="actionbar__searchbar">
+                    <input type="text" placeholder="Pesquisar" id="search-input" oninput="searchOnTable('search-input', 'users')">
+                    <a href="http://127.0.0.1:8081/pages/usuario/admin/cadastrar">Cadastrar usuário</a>
+                </div>
+            </div>
+
+            <div class="table__container">
+                <table id="users">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>Nome de usuário</th>
+                            <th>E-mail</th>
+                            <th>Está ativo?</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <p id="empty-table-message" class="table__description is-hidden">Nenhum usuário foi encontrado!</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../../scripts/alert.js"></script>
+    <script src="../../../scripts/token.js"></script>
+    <script src="../../../scripts/session.js"></script>
+    <script src="../../../scripts/header.js"></script>
+    <script src="../../../scripts/usuario.js"></script>
+    <script src="../../../scripts/search-table.js"></script>
+    <script>
+        window.onload = () => {
+            loadSession();
+            loadHeader();
+            let urlQueryString = window.location.search;
+            let urlQueryParams = new URLSearchParams(urlQueryString);
+            if (urlQueryParams.has("alertType") && urlQueryParams.has("alertMessage")) {
+                showAlert(urlQueryParams.get("alertType"), urlQueryParams.get("alertMessage"));
+            }
+            listarUsuarios();
+        };
+    </script>
+</body>
+
+</html>

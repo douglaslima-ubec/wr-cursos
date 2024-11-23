@@ -14,13 +14,6 @@
 </head>
 
 <body>
-    <header class="header" id="header">
-        <div class="header__logo">
-            <img src="./img/logo.png" alt="Logo da Empresa">
-            <h1>Painel do Administrador</h1>
-        </div>
-    </header>
-
     <main>
         <div class="alerts" id="alerts"></div>
         <section class="login">
@@ -44,9 +37,13 @@
     </main>
 
     <script src="./scripts/alert.js"></script>
+    <script src="./scripts/token.js"></script>
+    <script src="./scripts/session.js"></script>
+    <script src="./scripts/header.js"></script>
     <script src="./scripts/login.js"></script>
     <script>
         window.onload = () => {
+            loadHeader();
             let urlQueryString = window.location.search;
             let urlQueryParams = new URLSearchParams(urlQueryString);
             if (urlQueryParams.has("alertType") && urlQueryParams.has("alertMessage")) {

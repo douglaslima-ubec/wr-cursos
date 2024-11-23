@@ -75,7 +75,7 @@ async function cadastrarCurso(e) {
         cargaHoraria: cargaHoraria,
         preco: preco,
         descricao: descricao,
-        criadoPor: payload.usuarioId
+        criadoPor: payload.usuario.usuarioId
     };
 
     let response = await fetch("http://127.0.0.1:8080/curso/", {
@@ -173,4 +173,104 @@ async function atualizarCurso(e) {
     }
 
     showAlert("success", "Curso atualizado com sucesso!");
+}
+
+async function publicarCurso() {
+    let urlQueryString = window.location.search;
+    let urlQueryParams = new URLSearchParams(urlQueryString);
+
+    if (!urlQueryParams.has("cursoId")) {
+        window.location.href = "http://127.0.0.1:8081/pages/curso/listar?alertType=info&alertMessage=É obrigatório informar o ID do curso nos parâmetros de busca da URL!";
+    }
+    
+    let cursoId = urlQueryParams.get("cursoId");
+
+    let body = {
+        estaPublicado: true
+    };
+
+    let token = localStorage.getItem("token");
+
+    let response = await fetch(`http://127.0.0.1:8080/curso/${cursoId}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        method: "PUT",
+        body: JSON.stringify(body)
+    });
+
+    if (!response.ok) {
+        showAlert("error", `Ocorreu um erro (${response.status}). Tente novamente mais tarde!`);
+        return;
+    }
+    
+    document.getElementById("publish").style["display"] = "none";
+    document.getElementById("unpublish").style["display"] = "inline-block";
+
+    showAlert("info", "O curso foi publicado com sucesso!");
+}
+
+async function despublicarCurso() {
+    let urlQueryString = window.location.search;
+    let urlQueryParams = new URLSearchParams(urlQueryString);
+
+    if (!urlQueryParams.has("cursoId")) {
+        window.location.href = "http://127.0.0.1:8081/pages/curso/listar?alertType=info&alertMessage=É obrigatório informar o ID do curso nos parâmetros de busca da URL!";
+    }
+    
+    let cursoId = urlQueryParams.get("cursoId");
+
+    let body = {
+        estaPublicado: false
+    };
+
+    let token = localStorage.getItem("token");
+
+    let response = await fetch(`http://127.0.0.1:8080/curso/${cursoId}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        method: "PUT",
+        body: JSON.stringify(body)
+    });
+
+    if (!response.ok) {
+        showAlert("error", `Ocorreu um erro (${response.status}). Tente novamente mais tarde!`);
+        return;
+    }
+    
+    document.getElementById("publish").style["display"] = "inline-block";
+    document.getElementById("unpublish").style["display"] = "none";
+
+    showAlert("info", "O curso foi despublicado com sucesso!");
+}
+
+async function excluirCurso() {
+    let urlQueryString = window.location.search;
+    let urlQueryParams = new URLSearchParams(urlQueryString);
+
+    if (!urlQueryParams.has("cursoId")) {
+        window.location.href = "http://127.0.0.1:8081/pages/curso/listar?alertType=info&alertMessage=É obrigatório informar o ID do curso nos parâmetros de busca da URL!";
+    }
+
+    let cursoId = urlQueryParams.get("cursoId");
+
+    let token = localStorage.getItem("token");
+
+    let response = await fetch(`http://127.0.0.1:8080/curso/${cursoId}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        method: "DELETE"
+    });
+
+    if (!response.ok) {
+        showAlert("error", `Ocorreu um erro (${response.status}). Tente novamente mais tarde!`);
+        return;
+    }
+
+    window.location.href = "http://127.0.0.1:8081/pages/curso/listar?alertType=success&alertMessage=Curso excluído com sucesso!";
 }

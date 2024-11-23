@@ -26,7 +26,6 @@ async function login(e) {
         throw new Error("E-mail ou senha incorretos!");
     })
     .then(token => {
-        //document.cookie = `token=${token}; path=/`;
         localStorage.setItem("token", token);
         window.location.href = "http://127.0.0.1:8081/pages/home/home?alertType=success&alertMessage=Login realizado com sucesso!"
     })

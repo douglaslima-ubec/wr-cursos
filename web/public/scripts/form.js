@@ -1,9 +1,12 @@
 // Função para habilitar a edição dos campos
 function editForm(formId) {
     disableForm(formId, false);
-    document.getElementById('save').style.display = 'inline-block';
-    document.getElementById('cancel').style.display = 'inline-block';
-    document.getElementById('edit').style.display = 'none';
+    document.getElementById('save-form').style.display = 'inline-block';
+    document.getElementById('cancel-form').style.display = 'inline-block';
+    document.getElementById('edit-form').style.display = 'none';
+    if (document.getElementById('delete-form')) {
+        document.getElementById('delete-form').style.display = 'none';
+    }
 }
 
 /**
@@ -32,15 +35,21 @@ function disableForm(formId, enable) {
 // Função para salvar as alterações
 function saveForm(formId) {
     disableForm(formId, true);
-    document.getElementById('save').style.display = 'none';
-    document.getElementById('cancel').style.display = 'none';
-    document.getElementById('edit').style.display = 'inline-block';
+    document.getElementById('save-form').style.display = 'none';
+    document.getElementById('cancel-form').style.display = 'none';
+    document.getElementById('edit-form').style.display = 'inline-block';
+    if (document.getElementById('delete-form')) {
+        document.getElementById('delete-form').style.display = 'inline-block';
+    }
 }
 
 // Função para cancelar a edição
 function cancelForm(formId) {
     disableForm(formId, true);
-    document.getElementById('save').style.display = 'none';
-    document.getElementById('cancel').style.display = 'none';
-    document.getElementById('edit').style.display = 'inline-block';
+    document.getElementById('save-form').style.display = 'none';
+    document.getElementById('cancel-form').style.display = 'none';
+    document.getElementById('edit-form').style.display = 'inline-block';
+    if (document.getElementById('delete-form')) {
+        document.getElementById('delete-form').style.display = 'inline-block';
+    }
 }
