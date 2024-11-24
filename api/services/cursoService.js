@@ -1,6 +1,7 @@
 const Curso = require('../models/curso');
 const Instrutor = require('../models/instrutor');
 const Tema = require('../models/tema');
+const Usuario = require('../models/usuario');
 
 exports.findAll = () => {
     return Curso.findAll({
@@ -14,12 +15,17 @@ exports.findAll = () => {
                 as: "temas",
             },
         ],
+        order: [['nome', 'ASC']]
     })
 };
 
 exports.findById = (id) => {
     return Curso.findByPk(id, {
         include: [
+            {
+                model: Usuario,
+                as: "usuario",
+            },
             {
                 model: Instrutor,
                 as: "instrutores",

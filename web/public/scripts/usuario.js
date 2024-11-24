@@ -17,11 +17,9 @@ async function listarUsuarios() {
     let usuarios = await response.json();
 
     if (usuarios.length == 0) {
-        document.getElementById("empty-table-message").classList.remove("is-hidden");
-        document.getElementById("empty-table-message").classList.add("is-visible");
+        document.getElementById("empty-table-message").style["display"] = "block";
     } else {
-        document.getElementById("empty-table-message").classList.remove("is-visible");
-        document.getElementById("empty-table-message").classList.add("is-hidden");
+        document.getElementById("empty-table-message").style["display"] = "none";
     }
 
     let tabela = document.getElementById("users");
@@ -54,6 +52,7 @@ async function listarUsuarios() {
 
         let colunaEstaAtivo = document.createElement("td");
         colunaEstaAtivo.innerText = usuario?.estaAtivo ? 'SIM' : 'NÃO';
+        colunaEstaAtivo.setAttribute("title", usuario?.estaAtivo ? 'SIM' : 'NÃO');
         linha.appendChild(colunaEstaAtivo);
 
         tabela.appendChild(linha);
@@ -326,4 +325,78 @@ async function desativarUsuario() {
     document.getElementById("inactive").style["display"] = "none";
 
     showAlert("success", "O usuário foi desativado com sucesso!");
+}
+
+async function emailExiste() {
+    let email = document.getElementById("email").value;
+
+    if (email === null || email === "") {
+        return;
+    }
+
+    let token = localStorage.getItem("token");
+
+    let response = await fetch(`http://127.0.0.1:8080/usuario/emailExiste/${email}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        method: "GET"
+    });
+
+    if (!response.ok) {
+        showAlert("error", `Ocorreu um erro (${response.status}). Tente novamente mais tarde!`);
+        return;
+    }
+
+    let responseBody = await response.json();
+
+    if (responseBody.emailExiste) {
+        document.getElementById("email-error").style["display"] = "inline-block";
+        document.getElementById("email-error").classList.add("form__error--active");
+        document.querySelector('button[type="submit"]').disabled = true;
+    } else {
+        document.getElementById("email-error").style["display"] = "none";
+        document.getElementById("email-error").classList.remove("form__error--active");
+    }
+    if (document.getElementsByClassName("form__error--active").length == 0) {
+        document.querySelector('button[type="submit"]').disabled = false;
+    }
+}
+
+async function usuarioExiste() {
+    let usuario = document.getElementById("usuario").value;
+
+    if (usuario === null || usuario === "" || usuario === formData?.get?.("usuario")?.value) {
+        return; 
+    }
+
+    let token = localStorage.getItem("token");
+
+    let response = await fetch(`http://127.0.0.1:8080/usuario/usuarioExiste/${usuario}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        method: "GET"
+    });
+
+    if (!response.ok) {
+        showAlert("error", `Ocorreu um erro (${response.status}). Tente novamente mais tarde!`);
+        return;
+    }
+
+    let responseBody = await response.json();
+    
+    if (responseBody.usuarioExiste) {
+        document.getElementById("username-error").style["display"] = "inline-block";
+        document.getElementById("username-error").classList.add("form__error--active");
+        document.querySelector('button[type="submit"]').disabled = true;
+    } else {
+        document.getElementById("username-error").style["display"] = "none";
+        document.getElementById("username-error").classList.remove("form__error--active");
+    }
+    if (document.getElementsByClassName("form__error--active").length == 0) {
+        document.querySelector('button[type="submit"]').disabled = false;
+    }
 }

@@ -49,6 +49,38 @@ router.get('/:id', (req, res) => {
 });
 
 /**
+ * Retorna `true` se existir um usuário associado com o e-mail, caso contrário retorna `false`
+ */
+router.get('/emailExiste/:email', (req, res) => {
+    usuarioService.existsByEmail(req.params.email)
+        .then(emailExiste => {
+            return res.status(200).json({
+                emailExiste: emailExiste
+            });
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(500).json("Erro interno!");
+        })
+});
+
+/**
+ * Retorna `true` se existir um usuário associado com o nome de usuário, caso contrário retorna `false`
+ */
+router.get('/usuarioExiste/:usuario', (req, res) => {
+    usuarioService.existsByUsername(req.params.usuario)
+        .then(usuarioExiste => {
+            return res.status(200).json({
+                usuarioExiste: usuarioExiste
+            });
+        })
+        .catch(error => {
+            console.log(error);
+            return res.status(500).json("Erro interno!");
+        })
+});
+
+/**
  * Insere um novo usuário
  */
 router.post('/', (req, res) => {

@@ -2,7 +2,7 @@ const headerDefault = `
 <header class="header" id="header">
     <div class="header__logo">
         <img src="http://127.0.0.1:8081/img/logo.png" alt="Logo da Empresa">
-        <h1>Painel do Administrador</h1>
+        <h1 class="header__title">Painel do Administrador</h1>
     </div>
 </header>
 `
@@ -12,7 +12,7 @@ const headerLoggedUser = (usuario) => {
         <header class="header" id="header">
             <div class="header__logo">
                 <img src="http://127.0.0.1:8081/img/logo.png" alt="Logo da Empresa">
-                <h1>Painel do Administrador</h1>
+                <a href="http://127.0.0.1:8081/pages/home/home" class="header__title">Painel do Administrador</a>
             </div>
             <div class="header__logged-user">
                 <span>${usuario.usuario}</span>
@@ -20,7 +20,7 @@ const headerLoggedUser = (usuario) => {
                     <img src="http://127.0.0.1:8081/img/icons/user-solid.svg" alt="Foto do usuário logado">
                     <ul class="header__user-options is-hidden" id="user-options">
                         <li>
-                            <a href="http://127.0.0.1:8081/pages/usuario/editar?usuarioId=${usuario.usuarioId}">Alterar as minhas informações</a>
+                            <a href="http://127.0.0.1:8081/pages/usuario/editar">Alterar as minhas informações</a>
                         </li>
                         <li>
                             <a onclick="destroySession(event)">Sair</a>

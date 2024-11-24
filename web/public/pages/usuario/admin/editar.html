@@ -55,7 +55,8 @@
                 <div class="form__group">
                     <div class="form__field">
                         <label for="usuario">Nome de usuário</label>
-                        <input type="text" id="usuario" placeholder="Nome de usuário" required disabled>
+                        <input type="text" id="usuario" placeholder="Nome de usuário" required disabled onkeyup="usuarioExiste()">
+                        <p class="form__error" id="username-error">Nome de usuário já existe!</p>
                     </div>
                 </div>
 

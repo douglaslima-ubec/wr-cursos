@@ -14,16 +14,22 @@
     display: flex;
     align-items: center;
     gap: 30px;
+    cursor: default;
 }
 
 .header__logo img{
     height: 40px;
 }
 
-.header__logo h1 {
+.header__title {
     font-size: 1.25rem;
     color: #2D2D2D;
     font-weight: bold;
+}
+
+.header__title:hover {
+    color: #1a1a1a;
+    cursor: pointer;
 }
 
 .header__logged-user {

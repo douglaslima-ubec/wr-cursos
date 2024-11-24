@@ -29,7 +29,7 @@
             <div class="actionbar">
                 <h2 class="actionbar__title">Cursos cadastrados</h2>
                 <div class="actionbar__searchbar">
-                    <input type="text" placeholder="Pesquisar" id="search-input" oninput="searchOnTable('search-input', 'courses')">
+                    <input type="text" placeholder="Pesquisar">
                     <a href="http://127.0.0.1:8081/pages/curso/cadastrar">Cadastrar Curso</a>
                 </div>
             </div>
@@ -38,16 +38,17 @@
                 <table id="courses">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>#</th>
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>C.H</th>
                             <th>Valor</th>
+                            <th>Está publicado?</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
-                <p id="empty-table-message" class="table__description is-hidden">Nenhum curso foi encontrado!</p>
+                <p id="empty-table-message" class="table__description">Nenhum curso foi encontrado!</p>
             </div>
         </section>
     </main>
@@ -57,7 +58,6 @@
     <script src="../../scripts/session.js"></script>
     <script src="../../scripts/header.js"></script>
     <script src="../../scripts/curso.js"></script>
-    <script src="../../scripts/search-table.js"></script>
     <script>
         window.onload = () => {
             loadSession();

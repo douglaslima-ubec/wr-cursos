@@ -42,29 +42,32 @@
                 </div>
 
                 <div class="form__field">
-                    <label for="nome">Nome completo</label>
+                    <label for="nome">Nome completo*</label>
                     <input type="text" id="nome" placeholder="Nome completo do usuário" required>
                 </div>
                 
                 <div class="form__group">
                     <div class="form__field">
-                        <label for="usuario">Nome de usuário</label>
-                        <input type="text" id="usuario" placeholder="Nome de usuário" required>
+                        <label for="usuario">Nome de usuário*</label>
+                        <input type="text" id="usuario" placeholder="Nome de usuário" onkeyup="usuarioExiste()" required>
+                        <p class="form__error" id="username-error">Nome de usuário já existe!</p>
                     </div>
                     <div class="form__field">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" placeholder="exemplo@exemplo.com" required>
+                        <label for="email">E-mail*</label>
+                        <input type="email" id="email" placeholder="exemplo@exemplo.com" onkeyup="emailExiste()" required>
+                        <p class="form__error" id="email-error">E-mail já existe!</p>
                     </div>
                 </div>
 
                 <div class="form__group">
                     <div class="form__field">
-                        <label for="senha">Senha</label>
-                        <input type="password" id="senha" placeholder="Senha de no mínimo 8 caracteres" required>
+                        <label for="senha">Senha*</label>
+                        <input type="password" id="senha" minlength="8" placeholder="Senha de no mínimo 8 caracteres" onkeyup="confirmarSenha()" required>
+                        <p class="form__error" id="password-error">As senhas não são iguais!</p>
                     </div>
                     <div class="form__field">
-                        <label for="confirmar-senha">Confirmar senha</label>
-                        <input type="password" id="confirmar-senha" placeholder="Repita a senha" required>
+                        <label for="confirmar-senha">Confirmar senha*</label>
+                        <input type="password" id="confirmar-senha" placeholder="Repita a senha" onkeyup="confirmarSenha()" required>
                     </div>
                 </div>
 
@@ -80,6 +83,7 @@
     <script src="../../../scripts/usuario.js"></script>
     <script src="../../../scripts/form.js"></script>
     <script src="../../../scripts/modal.js"></script>
+    <script src="../../../scripts/senha.js"></script>
     <script>
         window.onload = () => {
             loadSession();

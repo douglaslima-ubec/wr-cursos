@@ -11,6 +11,7 @@ exports.findAll = () => {
                 as: "perfis",
             },
         ],
+        order: [['nome', 'ASC']],
     });
 };
 
@@ -103,3 +104,29 @@ exports.update = (usuario, id) => {
         return this.findById(usuarioAtual.getDataValue("usuarioId"));
     });
 };
+
+exports.existsByEmail = (email) => {
+    return Usuario.count({
+        where: {
+            email: email,
+        }
+    }).then(count => {
+        if (count == 0) {
+            return false;
+        }
+        return true;
+    });
+}
+
+exports.existsByUsername = (username) => {
+    return Usuario.count({
+        where: {
+            usuario: username,
+        }
+    }).then(count => {
+        if (count == 0) {
+            return false;
+        }
+        return true;
+    });
+}

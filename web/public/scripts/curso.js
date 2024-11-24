@@ -17,11 +17,9 @@ async function listarCursos() {
     let cursos = await response.json();
 
     if (cursos.length == 0) {
-        document.getElementById("empty-table-message").classList.remove("is-hidden");
-        document.getElementById("empty-table-message").classList.add("is-visible");
+        document.getElementById("empty-table-message").style["display"] = "block";
     } else {
-        document.getElementById("empty-table-message").classList.remove("is-visible");
-        document.getElementById("empty-table-message").classList.add("is-hidden");
+        document.getElementById("empty-table-message").style["display"] = "none";
     }
 
     let tabela = document.getElementById("courses");
@@ -49,11 +47,18 @@ async function listarCursos() {
 
         let colunaCH = document.createElement("td");
         colunaCH.innerText = curso?.cargaHoraria;
+        colunaCH.setAttribute("title", curso?.cargaHoraria);
         linha.appendChild(colunaCH);
 
         let colunaPreco = document.createElement("td");
         colunaPreco.innerText = `R$ ${curso?.preco}`;
+        colunaPreco.setAttribute("title", `R$ ${curso?.preco}`);
         linha.appendChild(colunaPreco);
+
+        let colunaEstaPublicado = document.createElement("td");
+        colunaEstaPublicado.innerText = curso?.estaPublicado ? 'SIM' : 'NÃO';
+        colunaEstaPublicado.setAttribute("title", curso?.estaPublicado ? 'SIM' : 'NÃO');
+        linha.appendChild(colunaEstaPublicado);
 
         tabela.appendChild(linha);
     });
@@ -216,7 +221,7 @@ async function despublicarCurso() {
     let urlQueryParams = new URLSearchParams(urlQueryString);
 
     if (!urlQueryParams.has("cursoId")) {
-        window.location.href = "http://127.0.0.1:8081/pages/curso/listar?alertType=info&alertMessage=É obrigatório informar o ID do curso nos parâmetros de busca da URL!";
+        window.location.href = "http://127.0.0.1:8081/pages/curso/listar?alertType=success&alertMessage=É obrigatório informar o ID do curso nos parâmetros de busca da URL!";
     }
     
     let cursoId = urlQueryParams.get("cursoId");
@@ -252,7 +257,7 @@ async function excluirCurso() {
     let urlQueryParams = new URLSearchParams(urlQueryString);
 
     if (!urlQueryParams.has("cursoId")) {
-        window.location.href = "http://127.0.0.1:8081/pages/curso/listar?alertType=info&alertMessage=É obrigatório informar o ID do curso nos parâmetros de busca da URL!";
+        window.location.href = "http://127.0.0.1:8081/pages/curso/listar?alertType=success&alertMessage=É obrigatório informar o ID do curso nos parâmetros de busca da URL!";
     }
 
     let cursoId = urlQueryParams.get("cursoId");

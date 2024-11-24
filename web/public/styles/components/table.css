@@ -16,10 +16,6 @@
     padding: 1rem 0;
 }
 
-.table__description.is-hidden {
-    padding: 0;
-}
-
 table {
     width: 100%;
 }
@@ -38,10 +34,20 @@ td {
 
 th {
     font-size: 1rem;
-    text-transform: uppercase;
+    font-weight: bold;
+}
+
+th:hover {
+    border-bottom: 2px solid white;
+    cursor: pointer;
 }
 
 td {
     font-size: .9rem;
     font-weight: 400;
+}
+
+td:hover {
+    cursor: default;
+    background-color: #06649e;
 }
